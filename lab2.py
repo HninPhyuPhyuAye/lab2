@@ -1,21 +1,41 @@
-print("ET0735 (DevOps for AIoT) - Lab 2 - Introduction to Python")
-
-def calculate_bmi(height, weight):
-    print("Height = " + str(height))
-    print("Weight = " + str(weight))
-
-    BMI = weight/ (height*height)
-    print("Your BMI is " + str(BMI))
-    if (BMI <18.5):
-        print("You're under weight")
-    elif (BMI >25.0):
-        print("You're over weight")
-    else:
-        print("You're normal weight")
+def main():
+    print("ET0735 (DevOps for AIoT) - Lab 2 - Introduction to Python")
+    display_main_menu()
+    num_list = get_user_input()
+    calc_average_temperature(num_list)
+    calc_min_max_temperature(num_list)
 
 
 
-calculate_bmi(weight=57, height=1.73)
+def display_main_menu():
+    print("Enter some numbers separated by commas (e.g. 5, 67,33")
 
-# TypeError: can only concatenate str (not "float") to str
+def get_user_input():
+    x= input().split(",")
+    x_float = [float(item) for item in x]
+    return (x_float)
 
+def calc_average_temperature(get_user_input):
+    sum=0
+    for i in get_user_input:
+        sum += i
+    avg = sum/len(get_user_input)
+    print(avg)
+    return avg
+
+
+
+def calc_min_max_temperature(get_user_input):
+    min=0
+    max=0
+    for i in get_user_input:
+        if i<min :
+            min = i
+        elif i>min :
+            max = i
+    print(min)
+    print(max)
+    return min,max
+
+
+main()
